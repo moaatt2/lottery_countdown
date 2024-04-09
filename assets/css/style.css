@@ -1,0 +1,118 @@
+body {
+    background-color: #030303;
+    color: #CCCCCC;
+}
+
+tool-heading {
+    text-align: center;
+}
+
+/* Links */
+a:link    {color: #9A9A9A;}
+a:visited {color: #7C7C7C;}
+a:hover   {color: #BCBCBC;}
+a:active  {color: #8E8E8E;}
+
+
+/* Form Stuff*/
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+  
+.form-group label {
+    margin-right: 10px;
+    text-align: left;
+    width: 170px;
+}
+  
+form input {
+    background-color: #262626;
+    color: #CCCCCC;
+    flex-grow: 1;
+    flex-basis: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.form-group.form-group--centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.form-group.form-group--centered input {
+    flex-grow: 0;
+    flex-basis: auto;
+    margin: 0 5px;
+}
+
+.mobile-inputs {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* Grid Mobile Form */
+.grid-container {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    padding: 10px;
+    gap: 10px;
+}
+
+.grid-container > div {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.grid-container > .num {
+    grid-column: span 2;
+}
+
+.grid-container input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Countdown Stuff */
+
+.countdown-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.countdown {
+    margin-top: 3px;
+    margin-bottom: 4px;
+}
+
+.countdown.label {
+    margin-right: 10px;
+    text-align: left;
+    width: 150px;
+}
+
+.countdown.timer {
+    flex-grow: 1;
+    flex-basis: 200px;
+}
+
+.countdown.button {
+    background-color: #262626;
+    color: #CCCCCC;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    flex-basis: auto;
+    margin: 0 5px;
+}
