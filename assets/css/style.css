@@ -7,6 +7,14 @@ tool-heading {
     text-align: center;
 }
 
+.center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
 /* Links */
 a:link    {color: #9A9A9A;}
 a:visited {color: #7C7C7C;}
