@@ -8,6 +8,11 @@ if (mobile) {
     document.getElementById("start-mobile").style.display = "none";
 }
 
+
+// Initialize State Variables
+let started = false;
+
+
 // Add keypress listener
 document.addEventListener("keydown", main);
 
@@ -20,6 +25,14 @@ function main(event) {
     let valid_touch = mobile && event.type === "touchstart"
     let valid_key = !mobile && (event.key === " " || event.key === "Spacebar")
     if (valid_touch || valid_key) {
-        alert("Hello");
+        
+        // If it has yet to start show the empty timer
+        if (!started) {
+            document.getElementById("start-mobile").style.display = "none";
+            document.getElementById("start-desktop").style.display = "none";
+            document.getElementById("time").style.display = "block";
+            started = true;
+        }
+
     }
 }
