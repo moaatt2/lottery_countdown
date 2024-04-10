@@ -19,6 +19,13 @@ document.addEventListener("keydown", main);
 // Add touch listener
 document.addEventListener("touchstart", main);
 
+function digit_loop() {
+    let time = document.getElementById("time");
+    let cur_time = time.textContent;
+    let n = (Number(cur_time[0]) + 1) % 10;
+    time.textContent = n + cur_time.slice(1);
+}
+
 // Define logic loop
 function main(event) {
     // Determine if event is valid keypress/touch
@@ -31,6 +38,7 @@ function main(event) {
             document.getElementById("start-mobile").style.display = "none";
             document.getElementById("start-desktop").style.display = "none";
             document.getElementById("time").style.display = "block";
+            setInterval(digit_loop, 100);
             started = true;
         }
 
