@@ -7,3 +7,19 @@ if (mobile) {
 } else {
     document.getElementById("start-mobile").style.display = "none";
 }
+
+// Add keypress listener
+document.addEventListener("keydown", main);
+
+// Add touch listener
+document.addEventListener("touchstart", main);
+
+// Define logic loop
+function main(event) {
+    // Determine if event is valid keypress/touch
+    let valid_touch = mobile && event.type === "touchstart"
+    let valid_key = !mobile && (event.key === " " || event.key === "Spacebar")
+    if (valid_touch || valid_key) {
+        alert("Hello");
+    }
+}
