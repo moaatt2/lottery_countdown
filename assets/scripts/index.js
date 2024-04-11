@@ -19,11 +19,20 @@ document.addEventListener("keydown", main);
 // Add touch listener
 document.addEventListener("touchstart", main);
 
-function digit_loop() {
+
+// Create a function to loop through digits in the time counter
+function digit_loop(digit) {
+    // Get Current Value
     let time = document.getElementById("time");
     let cur_time = time.textContent;
-    let n = (Number(cur_time[0]) + 1) % 10;
-    time.textContent = n + cur_time.slice(1);
+
+    // Itterate the digit
+    cur_time = cur_time.split("");
+    cur_time[digit] = (Number(cur_time[digit]) + 1) % 10;
+    cur_time = cur_time.join("");
+
+    // Update document
+    time.textContent = cur_time;
 }
 
 // Define logic loop
@@ -38,7 +47,7 @@ function main(event) {
             document.getElementById("start-mobile").style.display = "none";
             document.getElementById("start-desktop").style.display = "none";
             document.getElementById("time").style.display = "block";
-            setInterval(digit_loop, 100);
+            setInterval(digit_loop, 100, 0);
             started = true;
         }
 
