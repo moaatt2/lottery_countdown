@@ -47,6 +47,11 @@ function main(event) {
             document.getElementById("start-mobile").style.display = "none";
             document.getElementById("start-desktop").style.display = "none";
             document.getElementById("time").style.display = "block";
+            if (mobile) {
+                document.getElementById("stop-mobile").style.display = "block";
+            } else {
+                document.getElementById("stop-desktop").style.display = "block";
+            }
             setInterval(digit_loop, 100, 0);
             started = true;
         }
