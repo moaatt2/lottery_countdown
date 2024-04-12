@@ -44,14 +44,19 @@ function main(event) {
         
         // If it has yet to start show the empty timer
         if (!started) {
+            // Hide starting instructions
             document.getElementById("start-mobile").style.display = "none";
             document.getElementById("start-desktop").style.display = "none";
+
+            // Show timer and time setiting instructions
             document.getElementById("time").style.display = "block";
             if (mobile) {
-                document.getElementById("stop-mobile").style.display = "block";
+                document.getElementById("set-mobile").style.display = "block";
             } else {
-                document.getElementById("stop-desktop").style.display = "block";
+                document.getElementById("set-desktop").style.display = "block";
             }
+
+            // Start digit loop and mark that timer setting has started
             setInterval(digit_loop, 100, 0);
             started = true;
         }
