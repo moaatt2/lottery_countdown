@@ -11,6 +11,9 @@ if (mobile) {
 
 // Initialize State Variables
 let started = false;
+let interval;
+let digit = -1;
+let positions = [0, 1, 2, 3, 11, 12, 13, 20, 21, 29, 30, 40, 41, 43, 44, 45, 46];
 
 
 // Add keypress listener
@@ -35,6 +38,7 @@ function digit_loop(digit) {
     time.textContent = cur_time;
 }
 
+
 // Define logic loop
 function main(event) {
     // Determine if event is valid keypress/touch
@@ -56,9 +60,16 @@ function main(event) {
                 document.getElementById("set-desktop").style.display = "block";
             }
 
-            // Start digit loop and mark that timer setting has started
-            setInterval(digit_loop, 100, 0);
+            // Mark that timer has started
             started = true;
+        }
+
+        if (started && (digit < positions.length)) {
+            console.log('Hello', digit, positions.length)
+            clearInterval(interval);
+            digit += 1;
+            interval = setInterval(digit_loop, 100, positions[digit]);
+            console.log('Bye', digit, positions.length)
         }
 
     }
