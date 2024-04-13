@@ -64,6 +64,7 @@ function main(event) {
             started = true;
         }
 
+        // Number lock in logic
         if (started && (digit < positions.length)) {
             console.log('Hello', digit, positions.length)
             clearInterval(interval);
