@@ -13,7 +13,25 @@ if (mobile) {
 let started = false;
 let interval;
 let digit = -1;
-let positions = [0, 1, 2, 3, 11, 12, 13, 20, 21, 29, 30, 40, 41, 43, 44, 45, 46];
+let positions = [
+    [0, 10],  // Millenia
+    [1, 10],  // Centuries
+    [2, 10],  // Decades
+    [3, 10],  // Years
+    [11, 4],  // Days - Hundreds
+    [12, 10], // Days - Tens
+    [13, 10], // Days - Ones
+    [20, 3],  // Hours - Tens
+    [21, 10], // Hours - Ones
+    [29, 7],  // Minutes - Tens
+    [30, 10], // Minutes - Ones
+    [40, 7],  // Seconds - Tens
+    [41, 10], // Seconds - Ones
+    [43, 10], // Miliseconds - Thousands
+    [44, 10], // Miliseconds - Hundreds
+    [45, 10], // Miliseconds - Tens
+    [46, 10], // Miliseconds - Ones
+];
 
 
 // Add keypress listener
@@ -24,14 +42,14 @@ document.addEventListener("touchstart", main);
 
 
 // Create a function to loop through digits in the time counter
-function digit_loop(digit) {
+function digit_loop(digit, mod) {
     // Get Current Value
     let time = document.getElementById("time");
     let cur_time = time.textContent;
 
     // Itterate the digit
     cur_time = cur_time.split("");
-    cur_time[digit] = (Number(cur_time[digit]) + 1) % 10;
+    cur_time[digit] = (Number(cur_time[digit]) + 1) % mod;
     cur_time = cur_time.join("");
 
     // Update document
@@ -69,7 +87,7 @@ function main(event) {
             console.log('Hello', digit, positions.length)
             clearInterval(interval);
             digit += 1;
-            interval = setInterval(digit_loop, 100, positions[digit]);
+            interval = setInterval(digit_loop, 1000, positions[digit][0], positions[digit][1]);
             console.log('Bye', digit, positions.length)
         }
 
