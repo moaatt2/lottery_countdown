@@ -19,14 +19,14 @@ let positions = [
     [2, 10],  // Decades
     [3, 10],  // Years
     [11, 4],  // Days - Hundreds
-    [12, 10], // Days - Tens
-    [13, 10], // Days - Ones
+    [12, 10, 3, 7], // Days - Tens
+    [13, 10, 6, 6], // Days - Ones
     [20, 3],  // Hours - Tens
-    [21, 10], // Hours - Ones
+    [21, 10, 2, 5], // Hours - Ones
     [29, 7],  // Minutes - Tens
-    [30, 10], // Minutes - Ones
+    [30, 10, 6, 1], // Minutes - Ones
     [40, 7],  // Seconds - Tens
-    [41, 10], // Seconds - Ones
+    [41, 10, 6, 1], // Seconds - Ones
     [43, 10], // Miliseconds - Thousands
     [44, 10], // Miliseconds - Hundreds
     [45, 10], // Miliseconds - Tens
@@ -50,6 +50,13 @@ function digit_loop(settings) {
     // parse value settings from a list
     let digit = settings[0];
     let mod = settings[1];
+
+    // Handle modulo overide if previous digit meets specific value
+    if (settings.length > 2) {
+        if (Number(cur_time[digit - 1] == settings[2])) {
+            mod = settings[3]
+        }
+    }
 
     // Itterate the digit
     cur_time = cur_time.split("");
