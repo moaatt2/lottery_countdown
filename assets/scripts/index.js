@@ -42,10 +42,14 @@ document.addEventListener("touchstart", main);
 
 
 // Create a function to loop through digits in the time counter
-function digit_loop(digit, mod) {
+function digit_loop(settings) {
     // Get Current Value
     let time = document.getElementById("time");
     let cur_time = time.textContent;
+
+    // parse value settings from a list
+    let digit = settings[0];
+    let mod = settings[1];
 
     // Itterate the digit
     cur_time = cur_time.split("");
@@ -87,7 +91,7 @@ function main(event) {
             console.log('Hello', digit, positions.length)
             clearInterval(interval);
             digit += 1;
-            interval = setInterval(digit_loop, 1000, positions[digit][0], positions[digit][1]);
+            interval = setInterval(digit_loop, 1000, positions[digit]);
             console.log('Bye', digit, positions.length)
         }
 
