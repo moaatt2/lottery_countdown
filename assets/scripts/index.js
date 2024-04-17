@@ -20,7 +20,7 @@ let positions = [
     [3, 10],  // Years
     [11, 4],  // Days - Hundreds
     [12, 10, 3, 7], // Days - Tens
-    [13, 10, 6, 6], // Days - Ones
+    [13, 10, 6, 6, 3, 10], // Days - Ones
     [20, 3],  // Hours - Tens
     [21, 10, 2, 5], // Hours - Ones
     [29, 7],  // Minutes - Tens
@@ -55,6 +55,14 @@ function digit_loop(settings) {
     if (settings.length > 2) {
         if (Number(cur_time[digit - 1] == settings[2])) {
             mod = settings[3]
+        }
+    }
+    
+    // Secondary Overide if digit before previous is less than specific value
+    //   Implemented for Ones of Days
+    if (settings.length > 4) {
+        if (Number(cur_time[digit - 2] < settings[4])) {
+            mod = settings[5]
         }
     }
 
