@@ -106,7 +106,7 @@ function main(event) {
             console.log('Hello', digit, positions.length)
             clearInterval(interval);
             digit += 1;
-            interval = setInterval(digit_loop, 1000, positions[digit]);
+            interval = setInterval(digit_loop, 100, positions[digit]);
             console.log('Bye', digit, positions.length)
         }
 
