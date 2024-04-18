@@ -110,5 +110,20 @@ function main(event) {
             console.log('Bye', digit, positions.length)
         }
 
+        // Show Countdown Start Instructions after last digit locked in
+        if (started && (digit == positions.length)) {
+
+            // Hide Timer Setting Instructions
+            document.getElementById("set-mobile").style.display = "none";
+            document.getElementById("set-desktop").style.display = "none";
+
+            // Show Relevant Countdown Start Instructions
+            if (mobile) {
+                document.getElementById("start-countdown-mobile").style.display = "block";
+            } else {
+                document.getElementById("start-countdown-desktop").style.display = "block";
+            }
+        }
+
     }
 }
