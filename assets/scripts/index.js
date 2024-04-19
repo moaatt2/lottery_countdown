@@ -105,8 +105,9 @@ function main(event) {
         if (started && (digit < positions.length)) {
             clearInterval(interval);
             digit += 1;
-            interval = setInterval(digit_loop, 100, positions[digit]);
-            console.log('Bye', digit, positions.length)
+            if (digit < positions.length) {
+                interval = setInterval(digit_loop, 100, positions[digit]);
+            }
         }
 
         // Show Countdown Start Instructions after last digit locked in
