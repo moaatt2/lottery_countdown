@@ -103,7 +103,6 @@ function main(event) {
 
         // Number lock in logic
         if (started && (digit < positions.length)) {
-            console.log('Hello', digit, positions.length)
             clearInterval(interval);
             digit += 1;
             interval = setInterval(digit_loop, 100, positions[digit]);
