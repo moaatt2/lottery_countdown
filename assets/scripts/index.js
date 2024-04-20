@@ -76,7 +76,7 @@ function digit_loop(settings) {
 }
 
 
-// Define a function to take the
+// Define a function to convert the on screen time display into milliseconds
 function text_to_milliseconds() {
 
     // Get current time text
