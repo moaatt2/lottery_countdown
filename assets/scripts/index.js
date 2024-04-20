@@ -76,6 +76,32 @@ function digit_loop(settings) {
 }
 
 
+// Define a function to take the
+function text_to_milliseconds() {
+
+    // Get current time text
+    let time = document.getElementById("time").textContent;
+
+    // Get time components
+    let years        = Number(time.slice(0,4));
+    let days         = Number(time.slice(11,14));
+    let hours        = Number(time.slice(20,22));
+    let minutes      = Number(time.slice(29,31));
+    let seconds      = Number(time.slice(40,42));
+    let milliseconds = Number(time.slice(43,47));
+
+    // Calculate the total number of millisconds
+    let out = milliseconds
+        + seconds * 1000
+        + minutes * 1000 * 60
+        + hours   * 1000 * 60 * 60
+        + days    * 1000 * 60 * 60 * 24
+        + years   * 1000 * 60 * 60 * 24 * 365;
+    
+    return out;
+}
+
+
 // Define logic loop
 function main(event) {
     // Determine if event is valid keypress/touch
