@@ -102,6 +102,44 @@ function text_to_milliseconds() {
 }
 
 
+// Define a function to take a millisecond value and return a string in the format of the screen display
+function milliseconds_to_text(milliseconds) {
+
+    // Calculate number of milliseconds per other parts of the time
+    let second_factor = 1000;
+    let minute_factor = 1000 * 60;
+    let hour_factor   = 1000 * 60 * 60;
+    let day_factor    = 1000 * 60 * 60 * 24;
+    let year_factor   = 1000 * 60 * 60 * 24 * 365;
+
+    // Determine the number of years and remove those from the duration
+    let years = String(Math.floor(milliseconds/year_factor)).padStart(4, "0");
+    milliseconds = milliseconds - (years*year_factor);
+
+    // Determine the number of days and remove those from the duration
+    let days = String(Math.floor(milliseconds/day_factor)).padStart(3, "0");
+    milliseconds = milliseconds - (days*day_factor);
+
+    // Determine the number of hours and remove those from the duration
+    let hours = String(Math.floor(milliseconds/hour_factor)).padStart(2, "0");
+    milliseconds = milliseconds - (hours*hour_factor);
+
+    // Determine the number of minutes and remove those from the duration
+    let minutes = String(Math.floor(milliseconds/minute_factor)).padStart(2, "0");
+    milliseconds = milliseconds - (minutes*minute_factor);
+
+    // Determine the number of seconds and remove those from the duration
+    let seconds = String(Math.floor(milliseconds/second_factor)).padStart(2, "0");
+    milliseconds = milliseconds - (seconds*second_factor);
+
+    // Ensure that the milliseconds are zero padded
+    milliseconds = String(milliseconds).padStart(4, "0");
+
+    // Create and return a timestring based on the digits
+    return `${years} Years ${days} Days ${hours} Hours ${minutes} Minutes ${seconds}.${milliseconds} Seconds`;
+}
+
+
 // Define logic loop
 function main(event) {
     // Determine if event is valid keypress/touch
