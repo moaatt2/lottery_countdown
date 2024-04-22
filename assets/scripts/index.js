@@ -22,7 +22,7 @@ let positions = [
     [12, 10, 3, 7], // Days - Tens
     [13, 10, 6, 6, 3, 10], // Days - Ones
     [20, 3],  // Hours - Tens
-    [21, 10, 2, 5], // Hours - Ones
+    [21, 10, 2, 4], // Hours - Ones
     [29, 7],  // Minutes - Tens
     [30, 10, 6, 1], // Minutes - Ones
     [40, 7],  // Seconds - Tens
