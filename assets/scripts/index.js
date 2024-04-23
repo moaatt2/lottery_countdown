@@ -11,6 +11,7 @@ if (mobile) {
 
 // Initialize State Variables
 let started = false;
+let countdown_last_ended;
 let interval;
 let digit = -1;
 let positions = [
@@ -137,6 +138,23 @@ function milliseconds_to_text(milliseconds) {
 
     // Create and return a timestring based on the digits
     return `${years} Years ${days} Days ${hours} Hours ${minutes} Minutes ${seconds}.${milliseconds} Seconds`;
+}
+
+
+// Define a function to decrement the time text on the page.
+function countdown() {
+    // Get how much time remains on the countdown
+    let cur_time = text_to_milliseconds();
+
+    // Get current time and determine how much time elapsed since the last run
+    let start = Date.now();
+    let elapsed = start - countdown_last_ended;
+
+    // Adjust the text based on the elapsed time since last run and update the page
+    document.getElementById("time").textContent = milliseconds_to_text(cur_time - elapsed);
+
+    // Record the time of last run
+    countdown_last_ended = start;
 }
 
 
