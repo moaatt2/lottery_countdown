@@ -11,6 +11,8 @@ if (mobile) {
 
 // Initialize State Variables
 let started = false;
+let countdown_ready_to_start = false;
+let contdown_started = false;
 let countdown_last_ended;
 let interval;
 let digit = -1;
@@ -164,7 +166,20 @@ function main(event) {
     let valid_touch = mobile && event.type === "touchstart"
     let valid_key = !mobile && (event.key === " " || event.key === "Spacebar")
     if (valid_touch || valid_key) {
-        
+
+        // If countdown is ready to start and not yet started run countdown
+        //   This is at the start so that it is not run on the same button press as the final digit set
+        if (countdown_ready_to_start && !contdown_started) {
+            // Set a starting point for the countdown
+            countdown_last_ended = Date.now();
+
+            // Start the countdown
+            interval = setInterval(countdown, 100);
+
+            // Mark that the countdown has started
+            countdown_started = true;
+        }
+
         // If it has yet to start show the empty timer
         if (!started) {
             // Hide starting instructions
@@ -205,6 +220,9 @@ function main(event) {
             } else {
                 document.getElementById("start-countdown-desktop").style.display = "block";
             }
+
+            // Note that the countdown is ready to start
+            countdown_ready_to_start = true;
         }
 
     }
