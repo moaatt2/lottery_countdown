@@ -178,6 +178,13 @@ function main(event) {
 
             // Mark that the countdown has started
             countdown_started = true;
+
+            // Hide Countdown Start Instructions
+            document.getElementById("start-countdown-mobile").style.display = "none";
+            document.getElementById("start-countdown-desktop").style.display = "none";
+
+            // Show Countdown Cancellation Instructions
+            document.getElementById("cancelation").style.display = "block";
         }
 
         // If it has yet to start show the empty timer
@@ -208,7 +215,7 @@ function main(event) {
         }
 
         // Show Countdown Start Instructions after last digit locked in
-        if (started && (digit == positions.length)) {
+        if (started && (digit == positions.length) && !countdown_ready_to_start) {
 
             // Hide Timer Setting Instructions
             document.getElementById("set-mobile").style.display = "none";
