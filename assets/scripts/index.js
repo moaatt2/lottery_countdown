@@ -3,9 +3,9 @@ let mobile = navigator.userAgent.toLowerCase().includes("mobile");
 
 //// If mobile hide desktop form else show mobile form
 if (mobile) {
-    document.getElementById("start-desktop").style.display = "none";
+    document.getElementById("instructions").textContent = "Touch The Screen To Start";
 } else {
-    document.getElementById("start-mobile").style.display = "none";
+    document.getElementById("instructions").textContent = "Press Space To Start";
 }
 
 
@@ -179,26 +179,18 @@ function main(event) {
             // Mark that the countdown has started
             countdown_started = true;
 
-            // Hide Countdown Start Instructions
-            document.getElementById("start-countdown-mobile").style.display = "none";
-            document.getElementById("start-countdown-desktop").style.display = "none";
-
-            // Show Countdown Cancellation Instructions
-            document.getElementById("cancelation").style.display = "block";
+            // Update Instructions
+            document.getElementById("instructions").textContent = "Refresh The Page To Cancel The Countdown";
         }
 
         // If it has yet to start show the empty timer
         if (!started) {
-            // Hide starting instructions
-            document.getElementById("start-mobile").style.display = "none";
-            document.getElementById("start-desktop").style.display = "none";
-
-            // Show timer and time setiting instructions
+            // Show timer and Update Instructions
             document.getElementById("time").style.display = "block";
             if (mobile) {
-                document.getElementById("set-mobile").style.display = "block";
+                document.getElementById("instructions").textContent = "Touch The Screen To Lock In The Number";
             } else {
-                document.getElementById("set-desktop").style.display = "block";
+                document.getElementById("instructions").textContent = "Press Space To Lock In The Number";
             }
 
             // Mark that timer has started
@@ -216,16 +208,11 @@ function main(event) {
 
         // Show Countdown Start Instructions after last digit locked in
         if (started && (digit == positions.length) && !countdown_ready_to_start) {
-
-            // Hide Timer Setting Instructions
-            document.getElementById("set-mobile").style.display = "none";
-            document.getElementById("set-desktop").style.display = "none";
-
-            // Show Relevant Countdown Start Instructions
+            // Update Instructions
             if (mobile) {
-                document.getElementById("start-countdown-mobile").style.display = "block";
+                document.getElementById("instructions").textContent = "Touch The Screen To Start The Countdown";
             } else {
-                document.getElementById("start-countdown-desktop").style.display = "block";
+                document.getElementById("instructions").textContent = "Press Space To Start The Countdown";
             }
 
             // Note that the countdown is ready to start
