@@ -12,7 +12,7 @@ if (mobile) {
 // Initialize State Variables
 let started = false;
 let countdown_ready_to_start = false;
-let contdown_started = false;
+let countdown_started = false;
 let countdown_last_ended;
 let interval;
 let digit = -1;
@@ -169,7 +169,7 @@ function main(event) {
 
         // If countdown is ready to start and not yet started run countdown
         //   This is at the start so that it is not run on the same button press as the final digit set
-        if (countdown_ready_to_start && !contdown_started) {
+        if (countdown_ready_to_start && !countdown_started) {
             // Set a starting point for the countdown
             countdown_last_ended = Date.now();
 
