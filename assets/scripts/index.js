@@ -108,6 +108,9 @@ function text_to_milliseconds() {
 // Define a function to take a millisecond value and return a string in the format of the screen display
 function milliseconds_to_text(milliseconds) {
 
+    // Ensure that the number stays greater than 0
+    milliseconds = Math.max(0, milliseconds);
+
     // Calculate number of milliseconds per other parts of the time
     let second_factor = 1000;
     let minute_factor = 1000 * 60;
@@ -142,6 +145,20 @@ function milliseconds_to_text(milliseconds) {
     return `${years} Years ${days} Days ${hours} Hours ${minutes} Minutes ${seconds}.${milliseconds} Seconds`;
 }
 
+// Define a function to determine if the countdown should end
+function end_countdown() {
+    if (text_to_milliseconds() == 0) {
+        // Stop the countdown
+        clearInterval(interval);
+
+        // Play the finishing audio
+        document.getElementById("timer_done").play()
+
+        // Update intstructions
+        document.getElementById("instructions").textContent = "Congratulations. Refresh The Page To Start Again";
+    }
+}
+
 
 // Define a function to decrement the time text on the page.
 function countdown() {
@@ -154,6 +171,9 @@ function countdown() {
 
     // Adjust the text based on the elapsed time since last run and update the page
     document.getElementById("time").textContent = milliseconds_to_text(cur_time - elapsed);
+
+    // Determine if loop should be ended
+    end_countdown();
 
     // Record the time of last run
     countdown_last_ended = start;
